@@ -1,23 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models').Book;
+// const app = require('../app');
 
-
+console.log('start')
 function asyncHandler(cb){
+    console.log()
     return async(req, res, next) => {
       try {
         await cb(req, res, next)
       } catch(error){
+          console.log('error')
         res.status(500).send(error);
       }
     }
   }
 
   // gets all of the books by year 
-  router.get('/', asyncHandler(async (req, res) => {
-    const book = await Book.findAll({ order : [[ "year", "DESC" ]]});
-    res.render("index", { book  });
-  }));
+  router.get('/', asyncHandler(async (req,res)=>{
+    const books = await Book.findAll({ order: [['year', 'ASC']]});
+    res.render("index", {books})
+  })
+  );
 
   //  new book form 
   router.get('/new',(req, res) =>{
@@ -28,7 +32,7 @@ function asyncHandler(cb){
 
 router.post('/' , asyncHandler(async(req, res) => {
     let book;
-    try{ book = await Book.create(req.body); 
+    try { book = await Book.create(req.body); 
     res.redirect("/books/" + book.id);
     } catch (error){
         if(error.name === "SequelizeValidationError"){
@@ -59,9 +63,9 @@ router.post('/:id', asyncHandler(async (req, res) => {
       book = await Book.findByPk(req.params.id);
       if(book) {
         await book.update(req.body);
-        res.redirect("/books/" + book.id); 
       } else {
         res.sendStatus(404);
+        
       }
     } catch (error) {
       if(error.name === "SequelizeValidationError") {
@@ -75,7 +79,7 @@ router.post('/:id', asyncHandler(async (req, res) => {
   }));
   
 
-router.get('/:id/delete', asynchHandler(async(req, res) => {
+router.get('/:id/delete', asyncHandler(async(req, res) => {
     const book = await Book.findByPk(req.params.id);
     if(book){
         res.render('books/delete', { book, title: "Delete a book"});

@@ -1,22 +1,25 @@
 extends layout
-doctype html
 
-h1 Library Books
-p
-  a.button(href='new_book.html') Create New Book
-table
-  thead
-    tr
-      th Title
-      th Author
-      th Genre
-      th Year
-  tbody
-  for each book in books
-    tr
-      td
+block content
+  h1 Books
+  p
+    a.button(href="/books/new") Create New Book
+  table
+    thead
+      tr
+        th Title
+        th Author
+        th Genre
+        th Year
+    tbody
 
-        a(href=`/books/{book.id}`)= book.title
-             td= book.author
-             td= book. genre
-             td= book.year
+
+
+    each Book in Books
+      tr
+        td
+           a(href="/books/" + book.id) #{book.title}
+        td #{book.author}
+        td #{book.genre}
+        td #{book.year}
+      tr

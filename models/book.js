@@ -2,8 +2,13 @@
 const Sequelize = require('sequelize');
 // title , author , genre , year 
  module.exports =(sequelize) => {
-     class Book extends Sequelize.Model{}
+ class Book extends Sequelize.Model{}
 Book.init({
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true, 
+        autoIncrement: true
+  },
     title:{
         type:  Sequelize.STRING,
         allowNull:false,
@@ -35,7 +40,8 @@ Book.init({
      year:{
          type: Sequelize.INTEGER,
      }
-   },
+   }, {sequelize});
   
-   
-) }
+   return Book;
+ }
+ 

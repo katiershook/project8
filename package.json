@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/katiershook/project8#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
+    "express-generator": "^4.16.1",
+    "http-errors": "^1.7.3",
+    "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
     "pug": "^2.0.4",
     "sequelize": "^5.21.4",
