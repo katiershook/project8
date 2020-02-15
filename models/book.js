@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
  module.exports =(sequelize) => {
  class Book extends Sequelize.Model{}
 Book.init({
-    id: {
+    id: {  
         type: Sequelize.INTEGER,
         primaryKey: true, 
         autoIncrement: true
@@ -23,14 +23,11 @@ Book.init({
      },
    author:{
         type:  Sequelize.STRING,
-        allowNull:false,
+     
         validate: {
-            notNull: {
-                msg:" Author is required"
-            },
-            notEmpty:{
+             notEmpty:{ 
                 msg: "Whoops. Author is required"
-            }
+            } 
         },
      },
    

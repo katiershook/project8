@@ -1,18 +1,23 @@
-h1 New Book
-form
-  p
-    label(for='title') Title
-    input#title(name='title' type='text')
-  p
-    label(for='author') Author
-    input#author(name='author' type='text')
-  p
-    label(for='genre') Genre
-    input#genre(name='genre' type='text')
-  p
-    label(for='year') Year
-    input#year(name='year' type='text')
-  p
-    input(type='submit' value='Create New Book')
-  p
-    a.button(href='/') Cancel
+extends layout.pug
+block content
+
+  
+  h1 Create  A New Book
+  
+  form(action="/books/new", method="post")
+    p
+      label(for="title") Title:
+      input#title(type="text", name="title" value=book.title)
+    p
+      label(for="author") Author:
+      input#author(type="text", name="author")
+    p
+      label(for="genre") Genre:
+      input#genre(type="text", name="genre")
+    p
+      label(for="year") Year:
+      input#year(type="text", name="year")
+    p
+      input(type="submit", value="Create New Book")
+    p
+      a.button(href="/") Cancel
