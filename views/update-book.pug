@@ -3,12 +3,13 @@ block content
  
   h1 Update A Book
   
-  form(  method="post"  action='/books/' + book.id)
-    if (error)
-      h2.error oops
-        ul.error
-          li title is required
-          li author is required 
+   form(action="/books/" + book.id, method="post")
+    if (errors)
+      h2.errors oops
+        ul.errors
+           each error in errors
+                li 
+                  =error.message
     p
       label(for="title") Title
       input#title(type="text" name="title" value=book.title)
