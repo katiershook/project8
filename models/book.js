@@ -13,7 +13,7 @@ Book.init({
         type:  Sequelize.STRING,
         validate: {
            notEmpty:{
-                msg: "Whoops. Title is required"
+                msg: "A Title is required"
             }
         },
      },
@@ -21,7 +21,7 @@ Book.init({
         type:  Sequelize.STRING,
            validate: {
                notEmpty:{ 
-                msg: "Whoops. Author is required"
+                msg: " Author is required"
             } 
         },
      },
