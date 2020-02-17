@@ -1,5 +1,5 @@
 var createError = require('http-errors');
-//  const db =require('./db')
+
 var express = require('express');
 var path = require('path');
  var cookieParser = require('cookie-parser');
@@ -20,9 +20,9 @@ const sequelize = new Sequelize({
 (async () => {
     try {
         await sequelize.authenticate();
-        console.log('Connection to the database successful!');
+        console.log('Connected to database');
     } catch (error) {
-        console.error('Error connecting to the database: ', error);
+        console.error('Error connecting  ', error);
   
     }
 })();
@@ -54,7 +54,7 @@ app.use(function(err, req, res, next) {
 
   res.status(err.status || 500);
   if (err.status === 404) {
-      res.render('books/page-not-found');
+      res.render('page-not-found');
   } else {
       res.render('error');
   }
