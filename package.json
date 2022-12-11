@@ -19,7 +19,7 @@
   "homepage": "https://github.com/katiershook/project8#readme",
   "dependencies": {
     "cookie-parser": "^1.4.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-generator": "^4.16.1",
     "http-errors": "^1.7.3",
     "morgan": "^1.9.1",
